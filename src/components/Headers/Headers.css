@@ -1,0 +1,36 @@
+:root {
+    --secondary: #1a1b1b;
+    --primary: white;
+    --special: skyblue;
+}
+
+#navbar{
+    background-color: var(--secondary);
+}
+
+#navList {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    list-style: none;
+}
+
+#navItems{
+    padding: 1vmax 1vmax;
+    margin: 0 .5vmax;
+    border-bottom: .2vmax solid ;
+}
+
+#navLink { 
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#navLink:hover{
+    color: var(--special);
+}
+
+#navItems:hover {
+    border-bottom: .2vmax solid var(--special);
+}

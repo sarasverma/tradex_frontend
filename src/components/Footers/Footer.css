@@ -1,0 +1,49 @@
+:root {
+    --secondary: #1a1b1b;
+    --primary: white;
+    --special: skyblue;
+}
+
+.footers{
+    background-color: var(--secondary);
+    color: var(--primary);
+    display: flex;
+    min-height: 40vh;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* #footLeft {
+
+} */
+
+.impLinks{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 1rem .5rem;
+}
+.impLinks > a{
+    text-decoration: none;
+    color: var(--primary);
+}
+
+#footMid{
+    text-align: center;
+}
+
+#footRight .socials{
+    display: flex;
+    flex-direction: column;
+}
+
+.socialLinks > img{
+    transition: all  .5s;
+    opacity: .5;
+    margin: 0.1rem 0;
+}
+
+.socialLinks > img:hover{
+    opacity: 1;
+}
