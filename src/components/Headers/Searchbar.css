@@ -1,0 +1,35 @@
+#searchbar{
+    background-color: var(--secondary2);
+    color: var(--primary);
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.searchItems{
+    padding: 1vmin .5vmin;
+}
+
+#logo {
+    margin: 0 3vmin;
+}
+
+#search{
+}
+#search form input{
+    height: 4vh;
+    width: 1 rem;
+    border-top-left-radius: 4rem;
+    border-bottom-left-radius: 4rem;
+}
+
+#search form button img{
+    height: 4vh;
+}
+
+#search form button{
+    width: 1 rem;
+    border: 0 solid skyblue;
+    border-top-right-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+}

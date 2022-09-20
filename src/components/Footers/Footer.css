@@ -1,9 +1,3 @@
-:root {
-    --secondary: #1a1b1b;
-    --primary: white;
-    --special: skyblue;
-}
-
 .footers{
     background-color: var(--secondary);
     color: var(--primary);
