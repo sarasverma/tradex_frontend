@@ -34,10 +34,9 @@
 
 .socialLinks > img{
     transition: all  .5s;
-    opacity: .5;
     margin: 0.1rem 0;
 }
 
 .socialLinks > img:hover{
-    opacity: 1;
+    transform: scale(1.2);
 }

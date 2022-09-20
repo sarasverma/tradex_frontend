@@ -12,7 +12,7 @@ const Searchbar = () => {
         <form role="search">
           <input type="text" placeholder="Search" name="search" />
           <button type="submit">
-            <img src={SearchImg} type="submit"></img>
+            <img src={SearchImg} alt="search"></img>
           </button>
         </form>
       </div>

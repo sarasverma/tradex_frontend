@@ -1,4 +1,6 @@
 #navbar{
+    /* because of sticky seachbar */
+    margin-top: 7vh;
     background-color: var(--secondary);
 }
 
@@ -12,7 +14,7 @@
 #navItems{
     padding: 1.2vh 1vh;
     margin: 0 2vh;
-    border-bottom: .4vh solid ;
+    border-bottom: .4vh solid var(--secondary);
 }
 
 #navLink { 
