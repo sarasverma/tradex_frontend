@@ -2,3 +2,37 @@
     margin: 4vh 10vw;
     min-height: 80vh;
 }
+
+.heading{
+    text-align: center;
+    padding: .5vw;
+    width: 20%;
+    border-bottom: .3vh solid black;
+    margin: 0 auto;
+}
+
+.productCard{
+    width: 14vmax;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--textColor);
+    transition: all .5s;
+    padding-bottom: .5vmax;
+}
+
+.productCard > img {
+    width: 14vmax;
+}
+
+.productCard > div{
+    margin: 0.5vmax;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.productCard > span{
+    color: tomato;
+    padding-bottom: .5vmax;
+}
