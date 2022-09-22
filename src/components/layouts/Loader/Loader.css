@@ -1,0 +1,18 @@
+#loader{
+    max-width: 100%;
+}
+
+#loader > div{
+    width: 5vmax;
+    height: 5vmax;
+    margin: 0 auto;
+    border-bottom: .2rem solid var(--special);
+    border-radius: 50%;
+    animation: loaderRotate 800ms linear infinite;
+}
+
+@keyframes loaderRotate{
+    to{
+        transform: rotateZ(-360deg);
+    }
+}

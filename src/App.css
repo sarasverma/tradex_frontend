@@ -2,6 +2,7 @@
 *{
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
  /* global variable */
 :root {
@@ -11,4 +12,9 @@
   --secondary2: #E38B29;
   --textColor:black;
 
+}
+
+.container{
+  margin: 4vh 10vw;
+  min-height: 80vh;
 }

@@ -1,14 +1,17 @@
-.container{
-    margin: 4vh 10vw;
-    min-height: 80vh;
-}
-
 .heading{
     text-align: center;
     padding: .5vw;
     width: 20%;
     border-bottom: .3vh solid black;
     margin: 0 auto;
+    margin-bottom: 2vh;
+}
+
+.productsContainer{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .productCard{
@@ -19,6 +22,8 @@
     color: var(--textColor);
     transition: all .5s;
     padding-bottom: .5vmax;
+    padding-left: .2vmax;
+    margin: .7vmax;
 }
 
 .productCard > img {
@@ -26,13 +31,18 @@
 }
 
 .productCard > div{
-    margin: 0.5vmax;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.productCard > span{
+.productCard > span > h4{
+    margin: 0 0.5vmax;
     color: tomato;
     padding-bottom: .5vmax;
+}
+
+.productCard:hover{
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+    transform: translateY(-1vh);
 }
