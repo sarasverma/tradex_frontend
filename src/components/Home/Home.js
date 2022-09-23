@@ -13,7 +13,7 @@ const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(getProduct);
+    dispatch(getProduct());
   }, [dispatch]);
 
   return (
@@ -26,7 +26,9 @@ const Home = () => {
           <h2 className="heading">Featured products</h2>
           <div className="productsContainer">
             {products &&
-              products.map((product) => <Product product={product} />)}
+              products.map((product) => (
+                <Product product={product} key={product._id} />
+              ))}
           </div>
         </>
       )}
