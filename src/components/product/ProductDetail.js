@@ -4,6 +4,7 @@ import { getProductDetail } from "../../states/actions/productAction";
 import { useParams } from "react-router-dom";
 import "./ProductDetail.css";
 import ReactStars from "react-rating-stars-component";
+import Carousel from "./Carousel";
 
 const ProductDetail = ({ match }) => {
   const dispatch = useDispatch();
@@ -29,18 +30,8 @@ const ProductDetail = ({ match }) => {
 
   return (
     <div className="productDetail">
-      <div>
-        {/* <Carousel>
-          {product.images &&
-            product.images.map((item, i) => (
-              <img
-                className="carouselImage"
-                key={item.url}
-                src={item.url}
-                alt={`${i} Slide`}
-              />
-            ))}
-        </Carousel> */}
+      <div className="product-images">
+        {product.images && <Carousel data={product.images} />}
       </div>
       <div>
         <div className="detailBlock-1">
