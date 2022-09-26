@@ -5,16 +5,21 @@ import MetaData from "../layouts/MetaData";
 import { getProduct } from "../../states/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layouts/Loader/Loader";
+import { useAlert } from "react-alert";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { loading, error, products, productsCount } = useSelector(
     (state) => state.products
   );
+  const alert = useAlert();
 
   useEffect(() => {
+    if (error) {
+      alert.show("Some error occured !", { type: "error" });
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error, alert]);
 
   return (
     <>
