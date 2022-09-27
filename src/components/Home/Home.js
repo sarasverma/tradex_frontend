@@ -12,6 +12,9 @@ import { Slider, Typography } from "@mui/material";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const alert = useAlert();
+  let { keyword } = useParams();
+
   const {
     loading,
     error,
@@ -21,10 +24,21 @@ const Home = () => {
     filterProductsCount,
   } = useSelector((state) => state.products);
 
-  const alert = useAlert();
+  const categories = [
+    "All",
+    "Laptop",
+    "Footwear",
+    "Bottom",
+    "Tops",
+    "Attire",
+    "Camera",
+    "Phone",
+  ];
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 20000]);
+  const [category, setCategory] = useState("");
+  const [rating, setRating] = useState(0);
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -35,22 +49,21 @@ const Home = () => {
 
   let count = filterProductsCount;
 
-  let { keyword } = useParams();
   useEffect(() => {
     if (error) {
       alert.show(error, { type: "error" });
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage, price));
-  }, [dispatch, error, alert, keyword, currentPage, price]);
+    dispatch(getProduct(keyword, currentPage, price, category, rating));
+  }, [dispatch, error, alert, keyword, currentPage, price, category, rating]);
 
   return (
     <>
+      <MetaData title={`Tradex | ${keyword ? "Search" : "Home"}`} />
       {loading ? (
         <Loader />
       ) : (
         <>
-          <MetaData title={`Tradex | ${keyword ? "Search" : "Home"}`} />
           <h2 className="heading">Featured products</h2>
           <div className="productsContainer">
             {products &&
@@ -59,20 +72,48 @@ const Home = () => {
               ))}
           </div>
 
-          {/* filter related stuff */}
-          <div className="filterBox">
-            <Typography>Price</Typography>
-            <Slider
-              size="small"
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="on"
-              aria-labelledby="range-slider"
-              min={0}
-              max={20000}
-            />
-            <Typography>Categories</Typography>
-          </div>
+          {/* filter related stuff will only be shown when searched*/}
+          {keyword && (
+            <div className="filterBox">
+              <Typography>Price</Typography>
+              <Slider
+                size="small"
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={20000}
+              />
+              <Typography>Categories</Typography>
+              <ul className="categoryBox">
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => {
+                      if (category !== "All") setCategory(category);
+                      else setCategory("");
+                    }}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+              <Typography>Ratings </Typography>
+              <Slider
+                size="small"
+                value={rating}
+                onChange={(e, newRating) => {
+                  setRating(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                min={0}
+                max={5}
+                valueLabelDisplay="auto"
+              />
+            </div>
+          )}
 
           {/* pagination related stuff */}
           {resultPerPage < count && (

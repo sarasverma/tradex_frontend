@@ -27,6 +27,22 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* for scroll bar  */
+/* width */
+::-webkit-scrollbar {
+  width: .7vw;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+ /* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--special); 
+  border-radius: 4vw;
+}
+
+
 .container{
   margin: 4vh 10vw;
   min-height: 80vh;

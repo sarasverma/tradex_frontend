@@ -11,6 +11,7 @@ import Carousel from "./Carousel";
 import Loader from "../layouts/Loader/Loader";
 import { useAlert } from "react-alert";
 import ReviewCard from "./ReviewCard";
+import MetaData from "../layouts/MetaData";
 
 const ProductDetail = ({ match }) => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const ProductDetail = ({ match }) => {
 
   return (
     <>
+      <MetaData title={`Tradex | Product`} />
       {loading ? (
         <Loader />
       ) : (
