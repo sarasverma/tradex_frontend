@@ -14,9 +14,23 @@
 
 }
 
+/* hiding arrow for input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .container{
   margin: 4vh 10vw;
   min-height: 80vh;
+  /* overflow-x: hidden; */
 }
 
 .redColor{
@@ -25,3 +39,11 @@
 .greenColor{
   color: green;
 }
+
+.btn{
+  border-radius: 2vmin;
+  padding: .8vmin 2vmin;
+  background-color: var(--secondary2);
+  border: 0 solid;
+  color: var(--primary);
+} 

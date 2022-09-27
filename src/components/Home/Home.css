@@ -46,3 +46,65 @@
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
     transform: translateY(-1vh);
 }
+
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin: 6vmax;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.page-item{
+    list-style: none;
+    border: 1px solid gray;
+    padding: 1vmax 1.5vmax;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.page-item:first-child{
+    border-radius: .5rem 0 0 .5rem;
+}
+.page-item:last-child{
+    border-radius: 0 .5rem .5rem 0;
+}
+
+.page-link{
+    text-decoration: none;
+    color: var(--special);
+}
+.page-item:hover{
+    background-color: var(--secondary);
+}
+.page-item:hover .page-link{
+    color: var(--primary);
+}
+.pageItemActive{
+    background-color: var(--secondary2);
+}
+.pageLinkActive{
+    color: var(--primary);
+}
+
+.filterBox{
+    width: 10vw;
+    position: absolute;
+    top: 14vh;
+    right: 4vw;
+}
+
+
+
+@media screen and (max-width: 600px){
+    .filterBox{
+        width: 20vmax;
+        /* default one  */
+        position: static;
+        margin: auto;
+    }
+}

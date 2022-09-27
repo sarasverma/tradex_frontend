@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetail } from "../../states/actions/productAction";
+import {
+  clearErrors,
+  getProductDetail,
+} from "../../states/actions/productAction";
 import { useParams } from "react-router-dom";
 import "./ProductDetail.css";
 import ReactStars from "react-rating-stars-component";
 import Carousel from "./Carousel";
 import Loader from "../layouts/Loader/Loader";
 import { useAlert } from "react-alert";
+import ReviewCard from "./ReviewCard";
 
 const ProductDetail = ({ match }) => {
   const dispatch = useDispatch();
@@ -20,7 +24,8 @@ const ProductDetail = ({ match }) => {
   useEffect(() => {
     // like in backend we do req.params.id
     if (error) {
-      alert.show("Some error occured !", { type: "error" });
+      alert.show(error, { type: "error" });
+      dispatch(clearErrors());
     }
     dispatch(getProductDetail(id));
   }, [dispatch, id, error, alert]);
@@ -59,11 +64,11 @@ const ProductDetail = ({ match }) => {
                 <h1>₹{product.price}</h1>
                 <div className="detailBlock-3-1">
                   <div className="detailBlock-3-1-1">
-                    <button>-</button>
+                    <button className="btn"> - </button>
                     <input value="1" type="number" />
-                    <button>+</button>
+                    <button className="btn"> + </button>
                   </div>{" "}
-                  <button>Add to cart</button>
+                  <button className="btn">Add to cart</button>
                 </div>
                 <p>
                   Status:{" "}
@@ -77,7 +82,7 @@ const ProductDetail = ({ match }) => {
                 Description : <p>{product.description} </p>
               </div>
               <button
-                className="submitReview"
+                className="submitReview btn"
                 onClick={() =>
                   alert.show("Review submitted !", { type: "success" })
                 }
@@ -88,6 +93,17 @@ const ProductDetail = ({ match }) => {
           </div>
         </>
       )}
+      <div className="reviews">
+        <h3 className="reviewHeading">REVIEWS</h3>
+        {product.reviews && product.reviews[0] ? (
+          <div className="reviewCards">
+            {product.reviews &&
+              product.reviews.map((review) => <ReviewCard review={review} />)}
+          </div>
+        ) : (
+          <p className="noReview">No review yet ..</p>
+        )}
+      </div>
     </>
   );
 };
