@@ -1,32 +1,36 @@
-#navbar{
+.navbar{
     /* because of sticky seachbar */
     margin-top: 7vh;
     background-color: var(--secondary);
 }
 
-#navList {
+.navList {
     display: flex;
     align-content: center;
     justify-content: flex-start;
     list-style: none;
 }
 
-#navItems{
+.navItems{
     padding: 1.2vh 1vh;
     margin: 0 2vh;
     border-bottom: .4vh solid var(--secondary);
 }
 
-#navLink { 
+.navLink { 
     color: var(--primary);
     text-decoration: none;
     cursor: pointer;
 }
 
-#navLink:hover{
+.navLink:hover{
     color: var(--special);
 }
 
-#navItems:hover {
+.navItems:hover {
     border-bottom: .4vh solid var(--special);
+}
+
+.auth{
+    margin-left: auto;
 }

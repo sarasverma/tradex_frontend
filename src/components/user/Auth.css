@@ -1,0 +1,122 @@
+.authContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    z-index: 1001;
+    overflow: hidden;
+}
+
+.authBox{
+    background-color:white;
+    width: 45vmax;
+    height: 70vh;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.auth_toggle{
+    display: flex;
+    height: 3vmax;
+}
+
+.auth_toggle > p{
+    transition: all 0.5s;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+.auth_toggle > p:hover{
+    color: var(--secondary2);
+}
+.authBox > div  > button{
+    height: 3px;
+    width: 50%;
+    background-color: var(--secondary2);
+    border: none;
+}
+
+#registerImage > img{
+    width: 3vmax;
+    border-radius: 100%;
+}
+#registerImage > input{
+    display: flex;
+    padding: 0%;
+}
+#registerImage > input::file-selector-button{
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    height: 5vh;
+    border: none;
+    background-color: var(--primary);
+}
+#registerImage > input::file-selector-button:hover{
+    background-color: whitesmoke;
+}
+
+.loginForm, .registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 2vmax;
+    justify-content: space-evenly;
+    height: 70%;
+    transition: all .5s;
+}
+.registerForm{
+    transform: translateY(-100%) translateX(-100vmax);
+}
+.loginForm > div, .registerForm > div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.loginForm > div > input, .registerForm > div > input{
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--special);
+    border-radius: 4px;
+    outline: none;
+}
+.loginForm > div > svg, .registerForm > div > svg{
+    position: absolute;
+    transform: translateX(1vmax);
+}
+
+.loginForm > a {
+    text-decoration: none;
+    align-self: flex-end;
+    transition: all .5s;
+}
+.loginForm > a:hover {
+    color: var(--special);
+}
+
+.loginBtn, .registerBtn{
+    width: 100%;
+}
+
+.shiftToLeft{
+    transform: translateX(-100%);
+}
+.shiftToNeutral{
+    transform: translate(0%);
+}
+.shiftToNeutralForm{
+    transform: translateX(0%) translateY(-100%);
+}
+.shiftToRight{
+    transform: translateX(100%);
+}

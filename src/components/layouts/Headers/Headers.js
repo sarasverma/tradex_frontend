@@ -1,32 +1,39 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Headers.css";
 import Searchbar from "./Searchbar";
+import { ImUser } from "react-icons/im";
 
 const Headers = () => {
   return (
     <header>
       <Searchbar />
       <nav className="navbar" id="navbar">
-        <ul className="navList" id="navList">
-          <li className="navItems" id="navItems">
-            <a id="navLink" href="/">
+        <ul className="navList">
+          <li className="navItems">
+            <Link className="navLink" to="/">
               Home
-            </a>
+            </Link>
           </li>
-          <li className="navItems" id="navItems">
-            <a id="navLink" href="/">
+          <li className="navItems">
+            <Link className="navLink" to="/about">
               About us
-            </a>
+            </Link>
           </li>
-          <li className="navItems" id="navItems">
-            <a id="navLink" href="/">
+          <li className="navItems">
+            <Link className="navLink" to="/service">
               Service
-            </a>
+            </Link>
           </li>
-          <li className="navItems" id="navItems">
-            <a id="navLink" href="/">
+          <li className="navItems">
+            <Link className="navLink" to="/contact">
               Contact us
-            </a>
+            </Link>
+          </li>
+          <li className="navItems auth">
+            <Link className="navLink" to="/auth">
+              <ImUser />
+            </Link>
           </li>
         </ul>
       </nav>

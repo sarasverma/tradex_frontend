@@ -45,7 +45,7 @@ input[type=number] {
 
 .container{
   margin: 4vh 10vw;
-  min-height: 80vh;
+  min-height: 38vh;
   /* overflow-x: hidden; */
 }
 
@@ -60,6 +60,11 @@ input[type=number] {
   border-radius: 2vmin;
   padding: .8vmin 2vmin;
   background-color: var(--secondary2);
-  border: 0 solid;
+  border: none;
+  cursor: pointer;
   color: var(--primary);
+  transition: all .5s;
+} 
+.btn:hover{
+  color: var(--special);
 } 
