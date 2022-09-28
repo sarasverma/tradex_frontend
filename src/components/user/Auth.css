@@ -120,3 +120,10 @@
 .shiftToRight{
     transform: translateX(100%);
 }
+
+
+@media only screen and (max-width: 600px) {
+    #registerImage > img {
+        width: 8vmax;
+    }
+}

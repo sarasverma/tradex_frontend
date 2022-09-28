@@ -1,10 +1,24 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, login, register } from "../../states/actions/userAction";
+import { useEffect } from "react";
+import { useAlert } from "react-alert";
+import Loader from "../layouts/Loader/Loader";
 
 const Auth = () => {
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const navigate = useNavigate();
+
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switchTab = useRef(null);
@@ -12,10 +26,20 @@ const Auth = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({ name: "", email: "", password: "" });
-  const [avatar, setAvatar] = useState();
-  const [avatarPreview, setAvatarPreview] = useState("/logo512.png");
+  const [avatar, setAvatar] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState("");
 
   const { name, email, password } = user;
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    if (isAuthenticated) {
+      navigate("/account");
+    }
+  }, [dispatch, error, alert, navigate, isAuthenticated]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -33,8 +57,9 @@ const Auth = () => {
     }
   };
 
-  const loginSubmit = () => {
-    console.log("Login form submitted");
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
   };
 
   const registerOnChangeHandle = (e) => {
@@ -61,98 +86,113 @@ const Auth = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-
-    console.log("Register form submitted");
+    dispatch(register(myForm));
   };
 
   return (
-    <div className="authContainer">
-      <div className="authBox">
-        <div>
-          <div className="auth_toggle">
-            <p onClick={(e) => switchTabs(e, "login")}>Login</p>
-            <p onClick={(e) => switchTabs(e, "register")}>Register</p>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="authContainer">
+          <div className="authBox">
+            <div>
+              <div className="auth_toggle">
+                <p onClick={(e) => switchTabs(e, "login")}>Login</p>
+                <p onClick={(e) => switchTabs(e, "register")}>Register</p>
+              </div>
+              <button ref={switchTab}></button>
+            </div>
+            <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+              <div className="loginEmail">
+                <MdEmail />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                />
+              </div>
+              <div className="loginPassword">
+                <MdPassword />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                />
+              </div>
+              <Link to="/password/forgot">Forgot password</Link>
+              <input type="submit" value="Login" className="loginBtn btn" />
+            </form>
+            <form
+              className="registerForm"
+              ref={registerTab}
+              encType="multipart/form-data"
+              onSubmit={registerSubmit}
+            >
+              <div className="registerName">
+                <FaUser />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  required
+                  name="name"
+                  value={name}
+                  onChange={registerOnChangeHandle}
+                />
+              </div>
+              <div className="registerEmail">
+                <MdEmail />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  name="email"
+                  value={email}
+                  onChange={registerOnChangeHandle}
+                />
+              </div>
+              <div className="loginPassword">
+                <MdPassword />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  name="password"
+                  value={password}
+                  onChange={registerOnChangeHandle}
+                />
+              </div>
+              <div id="registerImage">
+                {avatarPreview ? (
+                  <img src={avatarPreview} alt="Avatar preview" />
+                ) : (
+                  <>
+                    <h1>
+                      <AiOutlineUserAdd />
+                    </h1>
+                  </>
+                )}
+                <input
+                  type="file"
+                  name="avatar"
+                  accept="image/*"
+                  onChange={registerOnChangeHandle}
+                />
+              </div>
+              <input
+                type="submit"
+                value="Register"
+                className="registerBtn btn"
+              />
+            </form>
           </div>
-          <button ref={switchTab}></button>
         </div>
-        <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-          <div className="loginEmail">
-            <MdEmail />
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={loginEmail}
-              onChange={(e) => setLoginEmail(e.target.value)}
-            />
-          </div>
-          <div className="loginPassword">
-            <MdPassword />
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={loginPassword}
-              onChange={(e) => setLoginPassword(e.target.value)}
-            />
-          </div>
-          <Link to="/password/forgot">Forgot password</Link>
-          <input type="submit" value="Login" className="loginBtn btn" />
-        </form>
-        <form
-          className="registerForm"
-          ref={registerTab}
-          encType="multipart/form-data"
-          onSubmit={registerSubmit}
-        >
-          <div className="registerName">
-            <FaUser />
-            <input
-              type="text"
-              placeholder="Name"
-              required
-              value={name}
-              onChange={registerOnChangeHandle}
-            />
-          </div>
-          <div className="registerEmail">
-            <MdEmail />
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={email}
-              onChange={registerOnChangeHandle}
-            />
-          </div>
-          <div className="loginPassword">
-            <MdPassword />
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={registerOnChangeHandle}
-            />
-          </div>
-          <div id="registerImage">
-            <img src={avatarPreview} alt="Avatar preview" />
-            <input
-              type="file"
-              name="avatar"
-              accept="image/*"
-              onChange={registerOnChangeHandle}
-            />
-          </div>
-          <input
-            type="submit"
-            value="Register"
-            className="registerBtn btn"
-            // disabled={loading ? true : false}
-          />
-        </form>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
