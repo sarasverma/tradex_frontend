@@ -33,4 +33,12 @@
 
 .auth{
     margin-left: auto;
+    z-index: 11;
+}
+
+
+.speedDialIcon{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
 }
