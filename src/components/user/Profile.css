@@ -1,0 +1,60 @@
+.profileContainer{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.profileContainer a{
+    text-decoration: none;
+}
+
+.profileContainer > div{
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer > div:first-child > h1{
+    transform: translateX(-10vmax) translateY(-2vmax );
+}
+
+.profileContainer > div:first-child > img {
+    width: 20vmax;
+    border-radius: 100%;
+    transition: all 0.5s;
+}
+
+.profileContainer > div:first-child > img:hover {
+    transform: scale(1.05);
+}
+
+.profileContainer > div:last-child {
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 5vmax;
+    box-sizing: border-box;
+}
+
+.profileContainer > div:last-child > div > h4 {
+    color: darkgray;
+}
+
+.profileContainer > div:last-child > div:last-child{
+    display: flex;
+    flex-direction: column;
+}
+.profileContainer > div:last-child > div:last-child > .btn{
+    margin: .4vh;
+}
+
+@media screen and (max-width: 600px) {
+    .profileContainer{
+        flex-direction: column;
+    }
+    .profileContainer > div:last-child{
+        text-align: center;
+        align-items: center;
+    }
+}
