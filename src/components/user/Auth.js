@@ -9,6 +9,7 @@ import { clearErrors, login, register } from "../../states/actions/userAction";
 import { useEffect } from "react";
 import { useAlert } from "react-alert";
 import Loader from "../layouts/Loader/Loader";
+import MetaData from "../layouts/MetaData";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -91,6 +92,7 @@ const Auth = () => {
 
   return (
     <>
+      <MetaData title="Tradex | Auth" />
       {loading ? (
         <Loader />
       ) : (
