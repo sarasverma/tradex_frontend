@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
@@ -22,6 +22,8 @@ const ProductDetail = ({ match }) => {
   let { id } = useParams();
   const alert = useAlert();
 
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     // like in backend we do req.params.id
     if (error) {
@@ -29,9 +31,9 @@ const ProductDetail = ({ match }) => {
       dispatch(clearErrors());
     }
     dispatch(getProductDetail(id));
-  }, [dispatch, id, error, alert]);
+  }, [dispatch, id, error, alert, product]);
 
-  const options = {
+  let options = {
     edit: false,
     color: "rgba(20, 20, 20, 0.1)",
     activeColor: "tomato",
@@ -66,9 +68,25 @@ const ProductDetail = ({ match }) => {
                 <h1>₹{product.price}</h1>
                 <div className="detailBlock-3-1">
                   <div className="detailBlock-3-1-1">
-                    <button className="btn"> - </button>
-                    <input value="1" type="number" />
-                    <button className="btn"> + </button>
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        if (quantity > 1) setQuantity(quantity - 1);
+                      }}
+                    >
+                      {" "}
+                      -{" "}
+                    </button>
+                    <input value={quantity} type="number" onChange={() => {}} />
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        setQuantity(quantity + 1);
+                      }}
+                    >
+                      {" "}
+                      +{" "}
+                    </button>
                   </div>{" "}
                   <button className="btn">Add to cart</button>
                 </div>
@@ -100,7 +118,9 @@ const ProductDetail = ({ match }) => {
         {product.reviews && product.reviews[0] ? (
           <div className="reviewCards">
             {product.reviews &&
-              product.reviews.map((review) => <ReviewCard review={review} />)}
+              product.reviews.map((review) => (
+                <ReviewCard review={review} key={review._id} />
+              ))}
           </div>
         ) : (
           <p className="noReview">No review yet ..</p>
