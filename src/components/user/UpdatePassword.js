@@ -20,7 +20,7 @@ const UpdatePassword = () => {
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   useEffect(() => {
     if (error) {
@@ -42,7 +42,7 @@ const UpdatePassword = () => {
 
     myForm.set("oldPassword", oldPassword);
     myForm.set("newPassword", newPassword);
-    myForm.set("confirmPassword", confirmPassword);
+    myForm.set("confirmNewPassword", confirmNewPassword);
     dispatch(updatePassword(myForm));
   };
 
@@ -90,12 +90,12 @@ const UpdatePassword = () => {
                   <AiFillLock />
                   <input
                     type="password"
-                    placeholder="Confirm Password"
+                    placeholder="Confirm New Password"
                     required
-                    name="confirmPassword"
-                    value={confirmPassword}
+                    name="confirmNewPassword"
+                    value={confirmNewPassword}
                     onChange={(e) => {
-                      setConfirmPassword(e.target.value);
+                      setConfirmNewPassword(e.target.value);
                     }}
                   />
                 </div>
