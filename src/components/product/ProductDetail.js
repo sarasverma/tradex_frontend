@@ -12,6 +12,7 @@ import Loader from "../layouts/Loader/Loader";
 import { useAlert } from "react-alert";
 import ReviewCard from "./ReviewCard";
 import MetaData from "../layouts/MetaData";
+import { addItemToCart } from "../../states/actions/cartAction";
 
 const ProductDetail = ({ match }) => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const ProductDetail = ({ match }) => {
       dispatch(clearErrors());
     }
     dispatch(getProductDetail(id));
-  }, [dispatch, id, error, alert, product]);
+  }, [dispatch, id, error, alert]);
 
   let options = {
     edit: false,
@@ -40,6 +41,11 @@ const ProductDetail = ({ match }) => {
     size: window.innerWidth < 600 ? 20 : 25,
     value: product.rating,
     isHalf: true,
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemToCart(id, quantity));
+    alert.success("Item added to cart");
   };
 
   return (
@@ -77,18 +83,20 @@ const ProductDetail = ({ match }) => {
                       {" "}
                       -{" "}
                     </button>
-                    <input value={quantity} type="number" onChange={() => {}} />
+                    <input readOnly type="number" value={quantity} />
                     <button
                       className="btn"
                       onClick={() => {
-                        setQuantity(quantity + 1);
+                        if (quantity < product.stock) setQuantity(quantity + 1);
                       }}
                     >
                       {" "}
                       +{" "}
                     </button>
                   </div>{" "}
-                  <button className="btn">Add to cart</button>
+                  <button className="btn" onClick={addToCartHandler}>
+                    Add to cart
+                  </button>
                 </div>
                 <p>
                   Status:{" "}

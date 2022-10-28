@@ -4,6 +4,7 @@ import { ImUser } from "react-icons/im";
 import { RiFileListLine } from "react-icons/ri";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
+import { BsFillCartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
@@ -17,6 +18,7 @@ const UserOptions = ({ user }) => {
 
   const options = [
     { icon: <RiFileListLine />, name: "Orders", func: orders },
+    { icon: <BsFillCartFill />, name: "Cart", func: cart },
     { icon: <ImUser />, name: "Profile", func: account },
     { icon: <BiLogOut />, name: "Logout", func: logoutUser },
   ];
@@ -34,6 +36,9 @@ const UserOptions = ({ user }) => {
   }
   function orders() {
     navigate("/orders");
+  }
+  function cart() {
+    navigate("/cart");
   }
   function account() {
     navigate("/account");

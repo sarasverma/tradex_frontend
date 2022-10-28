@@ -5,6 +5,7 @@ import {
   profileReducer,
   userReducer,
 } from "./userReducer";
+import { cartReducer } from "../reducers/cartReducer";
 
 const reducers = combineReducers({
   products: productReducer,
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   user: userReducer,
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
 
 export default reducers;
