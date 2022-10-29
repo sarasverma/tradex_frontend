@@ -1,3 +1,18 @@
+.emptyCart{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.emptyCart > a{
+    text-decoration: none;
+}
+.emptyCart > svg{
+    font-size: 5vmax;
+}
+
 .cartHeader{
     width: 80%;
     box-sizing: border-box;
@@ -7,11 +22,11 @@
 
 }
 
-.cartHeader > p{
+.cartHeader > h4{
     margin: 10px;
 }
 
-.cartHeader > p:last-child{
+.cartHeader > h4:last-child{
     text-align: end;
 }
 
@@ -20,6 +35,7 @@
     margin: auto;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
+    padding-bottom: 1vmax;
 }
 
 .cartInput{
@@ -30,7 +46,7 @@
 
 .cartInput > input {
     border: none;
-    width: 1vmax;
+    width: 2vmax;
     padding: 0.5vmax;
     text-align: center;
     outline: none;

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Auth.css";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
@@ -15,6 +15,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -32,15 +33,20 @@ const Auth = () => {
 
   const { name, email, password } = user;
 
+  console.log(location.search);
+  const redirect = location.search
+    ? `/${location.search.split("=")[1]}`
+    : "/account";
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate("/account");
+      navigate(redirect);
     }
-  }, [dispatch, error, alert, navigate, isAuthenticated]);
+  }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

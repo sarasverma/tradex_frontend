@@ -8,7 +8,6 @@
 
 .CartItemCard > img{
     width: 5vmax;
-
 }
 
 .CartItemCard > div{
@@ -21,6 +20,10 @@
     text-decoration: none;
 }
 
+.CartItemCard > div > p{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
     .CartItemCard{
         padding: 3vmax;
@@ -29,4 +32,7 @@
     .CartItemCard > div {
         margin: 1vmax 2vmax;
     }
+    .CartItemCard > img{
+        width: 7vmax;
+    }    
 }

@@ -59,6 +59,7 @@ input[type=number] {
 .btn{
   border-radius: 2vmin;
   padding: .8vmin 2vmin;
+  margin: 1vmin 0;
   background-color: var(--secondary2);
   border: none;
   cursor: pointer;
@@ -68,3 +69,14 @@ input[type=number] {
 .btn:hover{
   color: var(--special);
 } 
+
+
+@media screen and (max-width: 600px) {
+  *{
+    font-size: large;
+  }
+  .container{
+    margin: 2vh 0.5vw;
+  }    
+
+}
