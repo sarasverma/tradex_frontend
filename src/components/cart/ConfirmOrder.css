@@ -1,0 +1,80 @@
+.confirmOrderPage{
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+}
+
+.confirmOrderPage > div:last-child{
+    border-left: 1px solid gray;
+}
+
+.confirmshippingAreaBox,
+.confirmCartItemsContainer{
+    margin: 1vmax;
+}
+
+.confirmshippingAreaBox > div{
+    display: flex;
+    margin: 1vmax 0;
+}
+
+
+.confirmCartItemsContainer{
+    max-height: 20vmax;
+    overflow-y: auto;
+}
+
+.confirmCartItemsContainer > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confirmCartItemsContainer > div > img{
+    width: 5vmax;
+}
+
+.confirmCartItemsContainer > div > a{
+    width: 50%;
+    text-decoration: none;
+}
+
+.orderSummary{
+    padding: 7vmax;
+}
+
+.orderSummary > p {
+    text-align: center;
+    padding: 1vmax;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+}
+.orderSummary > div > div{
+    display: flex;
+    justify-content: space-between;
+    margin: 2vmax 0;
+}
+
+.orderSummaryTotal {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+    padding: 2vmax 0
+}
+
+@media screen and (max-width: 600px){
+    .confirmOrderPage{
+        grid-template-columns: 1fr;
+        height: unset;
+    }
+
+    .confirmOrderPage > div:last-child{
+        border-left: 0;
+        border-top: 1px solid gray;
+    }
+
+    .confirmshippingAreaBox > div{
+        display: flex;
+        margin: 6vw 0;
+    }
+}

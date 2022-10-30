@@ -33,7 +33,6 @@ const Auth = () => {
 
   const { name, email, password } = user;
 
-  console.log(location.search);
   const redirect = location.search
     ? `/${location.search.split("=")[1]}`
     : "/account";

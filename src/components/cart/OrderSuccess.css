@@ -1,0 +1,19 @@
+.orderSuccess{
+    margin: auto;
+    text-align: center;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vmax;
+}
+
+.orderSuccess > svg{
+    font-size: 10vmax;
+    color: var(--secondary);
+}
+
+.orderSuccess > a{
+    text-decoration: none;
+}
