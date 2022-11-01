@@ -1,19 +1,20 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
+import { Rating } from "@material-ui/lab";
+import { AiOutlineUser } from "react-icons/ai";
 
 const ReviewCard = ({ review }) => {
   const options = {
-    edit: false,
-    color: "rgba(20, 20, 20, 0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
     value: review.rating,
-    isHalf: true,
+    readOnly: true,
+    precision: 0.5,
   };
   return (
     <div className="reviewCard">
-      <h4>{review.name}</h4>
-      <ReactStars {...options} />
+      <div className="reviewUser">
+        <AiOutlineUser />
+        <h4>{review.name}</h4>
+      </div>
+      <Rating {...options} />
       <span>{review.comment}</span>
     </div>
   );

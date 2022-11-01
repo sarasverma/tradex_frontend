@@ -1,4 +1,4 @@
-import { useRef,useEffect } from "react";
+import { useRef, useEffect } from "react";
 import "./Payment.css";
 import CheckOutSteps from "./CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,8 +19,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
-import {clearErrors, createOrder} from "../../states/actions/orderAction";
-
+import { clearErrors, createOrder } from "../../states/actions/orderAction";
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -39,7 +38,14 @@ const Payment = () => {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
 
-  const order = {shippingInfo, orderItems:cartItems, itemsPrice:orderInfo.subtotal, taxPrice:orderInfo.tax, shippingPrice: orderInfo.shippingPrice, totalPrice:orderInfo.totalPrice}
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: orderInfo.subtotal,
+    taxPrice: orderInfo.tax,
+    shippingPrice: orderInfo.shippingPrice,
+    totalPrice: orderInfo.totalPrice,
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -85,8 +91,8 @@ const Payment = () => {
           // managing order here
           order.paymentInfo = {
             id: result.paymentIntent.id,
-            status:result.paymentIntent.status,
-          }
+            status: result.paymentIntent.status,
+          };
           dispatch(createOrder(order));
           navigate("/success");
         } else {
@@ -100,11 +106,11 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    if(error){
-        alert.error(error);
-        dispatch(clearErrors())
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
     }
-  }, [alert, error, dispatch])
+  }, [alert, error, dispatch]);
 
   return (
     <>

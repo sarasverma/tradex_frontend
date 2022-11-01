@@ -1,0 +1,43 @@
+.orderDetailsPage {
+    background-color: white;
+}
+
+.orderDetailsContainer > h1 {
+    margin: 4vmax 0;
+}
+
+.orderDetailsContainer {
+    padding: 5vmax;
+    padding-bottom: 0%;
+}
+
+.orderDetailsContainerBox > div {
+    display: flex;
+    margin: 1vmax 0;
+}
+
+.orderDetailsContainerBox > div > span {
+    margin: 0 1vmax;
+}
+
+.orderDetailsCartItems {
+    padding: 2vmax 5vmax;
+    border-top: 1px solid gray;
+}
+
+.orderDetailsCartItemsContainer > div {
+    display: flex;
+    align-items: center;
+    margin: 2vmax 0;
+}
+
+.orderDetailsCartItemsContainer > div > img {
+    width: 5vmax;
+}
+
+.orderDetailsCartItemsContainer > div > a {
+    margin: 0 2vmax;
+    width: 60%;
+    text-decoration: none;
+}
+

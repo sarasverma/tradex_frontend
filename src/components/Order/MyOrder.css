@@ -1,0 +1,42 @@
+.myOrderPage{
+    width: 80vw;
+    max-width: 80vw;
+    padding: 0 7vmax;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.myOrdersTable{
+    background-color: white;
+}
+
+.myOrdersTable div{
+    border: none;
+}
+
+.myOrdersTable a{
+    color: gray;
+    transition: all 0.5s;
+}
+
+.myOrdersTable a:hover{
+    color: var(--secondary);
+}
+
+.MuiDataGrid-columnHeader{
+    background-color: var(--secondary);
+}
+
+.MuiDataGrid-columnHeader div{
+    color: var(--primary);
+}
+
+.MuiDataGrid-iconSeparator{
+    display: none !important;
+}

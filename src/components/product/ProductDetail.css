@@ -53,6 +53,27 @@
     margin-bottom: 1vh;
 }
 
+.submitDialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitDialogTextArea {
+    border: 1px solid gray;
+    margin: 1vmax 0;
+    outline: none;
+    padding: 1rem;
+}
+
+.reviewsHeading {
+    text-align: center;
+    border-bottom: 1px gray;
+    padding: 1vmax;
+    width: 20vmax;
+    margin: auto;
+    margin-bottom: 4vmax;
+}
+
 .reviews{
     display: flex;
     align-content: center;
@@ -63,6 +84,14 @@
 
 .reviewCard{
     margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.reviewCard > span{
+    font-size: 1rem;
+}
+.reviewUser{
+    display: flex;
 }
 
 .noReview{

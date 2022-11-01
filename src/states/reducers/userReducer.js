@@ -32,7 +32,7 @@ export const userReducer = (state = { user: {} }, action) => {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:
     case LOAD_USER_REQUEST:
-      return { loading: true, isAuthenticated: false };
+      return { loading: true };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
     case LOAD_USER_SUCCESS:

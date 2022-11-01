@@ -10,7 +10,7 @@ const OrderSuccess = () => {
       <div className="orderSuccess">
         <AiFillCheckCircle />
         <Typography>Your order has been placed successfully.</Typography>
-        <Link to="/order/me" className="btn">
+        <Link to="/orders" className="btn">
           View order
         </Link>
       </div>
