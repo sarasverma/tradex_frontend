@@ -24,6 +24,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import MyOrders from "./components/Order/MyOrders";
 import OrderDetail from "./components/Order/OrderDetail";
+import PageNotFound from "./components/layouts/PageNotFound";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -145,6 +146,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
         <Footers />
